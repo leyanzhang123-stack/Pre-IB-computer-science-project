@@ -3,14 +3,15 @@ Mochi Uncollected Asian Dessert Low Sweet
 Salad Uncollected European Lunch_Dinner Low Savory
 Hamburger Collected American Lunch_Dinner High Savory
 Churros Collected European Dessert High Sweet
-Peking_roasted_duck Uncollected Asian Lunch_Dinner High Umami
-Dim_Sum Collected Asian Breakfast Low Savory
+Peking roasted duck Uncollected Asian Lunch_Dinner High Umami
+Dim sum Collected Asian Breakfast Low Savory
 Spaghetti Collected European Lunch_Dinner High Savory
 Sushi Collected Asian Lunch_Dinner Low Umami
 Cheesecake Uncollected American Dessert High Sweet
-Bagels_with_Lox Uncollected American Breakfast Low Savory
-Ramen_soup Uncollected Asian Lunch_Dinner Low Umami
-Cheese_Fondue Collected European Lunch_Dinner High Savory
-French_toast Collected European Breakfast Low Sweet
+Bagels with Lox Uncollected American Breakfast Low Savory
+Ramen soup Uncollected Asian Lunch_Dinner Low Umami
+Cheese fondue Collected European Lunch_Dinner High Savory
+French toast Collected European Breakfast Low Sweet
 Tiramisu Collected European Dessert High Sweet
+
 
