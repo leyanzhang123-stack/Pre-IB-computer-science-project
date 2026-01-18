@@ -1,0 +1,19 @@
+Pizza collected European lunch/dinner high savory
+Mochi uncollected Asian dessert medium sweet
+Doner_kebab uncollected European lunch/dinner high savory
+Hamburger collected American lunch/dinner high savory
+Churros collected European dessert high sweet
+Peking_roasted_duck uncollected Asian lunch/dinner high umami
+Dim_Sum collected Asian breakfast medium savory
+Spaghetti collected European lunch/dinner medium savory
+Sushi collected Asian lunch/dinner medium umami
+Cheesecake uncollected American dessert high sweet
+Bagels_with_Lox uncollected American breakfast medium savory
+Ramen_soup uncollected Asian lunch/dinner high umami
+Cheese_Fondue collected European lunch/dinner high savory
+French_toast collected European breakfast medium sweet
+Tiramisu collected European dessert high sweet
+
+
+
+
