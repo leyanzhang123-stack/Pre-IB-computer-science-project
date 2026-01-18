@@ -19,15 +19,16 @@ class Food:
     Returns: 
         food item with its attributes
     """
-    def __init__(food, name, status, cuisine_style, meal_type, calorie_level, flavour):
-        food.name = name
-        food.status = status
-        food.cuisine_style = cuisine_style
-        food.meal_type = meal_type
-        food.calorie_level = calorie_level
-        food.flavour = flavour
-    def __str__(food):
-        return f'{food.name} {food.status} {food.cuisine_style} {food.meal_type} {food.calorie_level} {food.flavour}'
+    def __init__(self, name, status, cuisine_style, meal_type, calorie_level, flavour):
+        self.name = name
+        self.status = status
+        self.cuisine_style = cuisine_style
+        self.meal_type = meal_type
+        self.calorie_level = calorie_level
+        self.flavour = flavour
+
+    def __str__(self):
+        return f'{self.name} {self.status} {self.cuisine_style} {self.meal_type} {self.calorie_level} {self.flavour}'
 
 def read_foods(filename):
     """
@@ -41,9 +42,12 @@ def read_foods(filename):
     """
     foods = [] 
     with open(filename) as file:
-        for line in file: 
+       for line in file:
+            line = line.strip()
+            if not line:
+                continue
             words = line.split()
-            if len(words) <6:
+            if len(words) < 6:
                 continue
             name = words[0]
             status = words[1]
@@ -132,6 +136,10 @@ def analyze_most_common_cuisine_style(collected_foods):
     Returns:
         most frequent cuisine style among collected foods
     """
+
+    if not collected_foods:
+        return 'N/A'
+
     American_count = 0
     Asian_count = 0
     European_count = 0
@@ -160,6 +168,10 @@ def analyze_most_common_calorie_level(collected_foods):
     Returns:
         most frequent calorie level among collected foods
     """
+
+    if not collected_foods:
+        return 'N/A'
+    
     low_count = 0
     medium_count = 0
     high_count = 0
@@ -188,6 +200,10 @@ def analyze_most_common_flavour(collected_foods):
     Returns:
         most frequent flavour among collected foods
     """
+
+     if not collected_foods:
+        return 'N/A'
+    
     sweet_count = 0
     savory_count = 0
     umami_count = 0
