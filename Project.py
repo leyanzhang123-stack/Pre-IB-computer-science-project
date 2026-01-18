@@ -7,13 +7,19 @@ def prompt_filename():
     Returns:
        path to valid text file
     """
-    while not os.path.isfile(filename := input('give path to data file: ')):
+    while not os.path.isfile(filename := input('Give path to data file: ')):
         print(f'data file {filename} does not exist')
 
     return filename
 
 class Food:
-    def __init__(food, name, status, cuisine_style, meal_type,calorie_level, flavour):
+    """
+    Class representing a food item.
+
+    Returns: 
+        food item with its attributes
+    """
+    def __init__(food, name, status, cuisine_style, meal_type, calorie_level, flavour):
         food.name = name
         food.status = status
         food.cuisine_style = cuisine_style
@@ -33,18 +39,19 @@ def read_foods(filename):
     Returns:
         list of objects of type Food
     """
-    foods = []
+    foods = [] 
     with open(filename) as file:
-        for line in file:
+        for line in file: 
             words = line.split()
-            status = words[-5]
-            cuisine_style = words[-4]
-            meal_type = words[-3]
-            calorie_level = words[-2]
-            flavour = words[-1]
-            # name is everything from the first word to the collecting status ; these are joined into single string
-            name = str.join(' ', words[-5:0:-1])
-            foods.append(Food(name, status, cuisine_style, meal_type,calorie_level, flavour))
+            if len(words) <6:
+                continue
+            name = words[0]
+            status = words[1]
+            cuisine_style = words[2]
+            meal_type = words[3]
+            calorie_level = words[4]
+            flavour = words[5]
+            foods.append(Food(name, status, cuisine_style, meal_type, calorie_level, flavour))
 
     return foods
 
@@ -87,12 +94,9 @@ def count_collected_foods(foods):
     Returns:
         number of collected foods
     """
-    count = 0
-    for food in foods:
-        if food.status == 'collected':
-            count += 1
+    collected_foods = sort_collected_foods(foods)
 
-    return count
+    return len(collected_foods)
 
 def sort_foods_by_meal_type(collected_foods):
     """
@@ -202,14 +206,69 @@ def analyze_most_common_flavour(collected_foods):
     else:
         return 'umami'
     
+def print_breakfast(breakfast):
+    """
+    Print names of collected breakfast foods.
+
+    Args:
+        breakfast: list of breakfast food objects
+
+    Returns:
+        names of collected breakfast foods separated by commas
+    """
+    for food in breakfast:
+        print(food.name, end='')
+        if food.name != breakfast[-1].name:
+            print(end=', ')
+
+def print_lunch_dinner(lunch_dinner):
+    """
+    Print names of collected lunch/dinner foods.
+
+    Args:
+        lunch_dinner: list of lunch/dinner food objects
+
+    Returns:
+        names of collected lunch/dinner foods separated by commas
+    """
+    for food in lunch_dinner:
+        print(food.name, end='')
+        if food.name != lunch_dinner[-1].name:
+            print(end=', ')
+
+def print_dessert(dessert):
+    """
+    Print names of collected dessert foods.
+
+    Args:
+        dessert: list of dessert food objects
+
+    Returns:
+        names of collected dessert foods separated by commas
+    """
+    for food in dessert:
+        print(food.name, end='')
+        if food.name != dessert[-1].name:
+            print(end=', ')
+
 def print_analysis(foods):
-    collected_foods = get_collected_foods(foods)
-    print(f"Total number of foods: {count_all_the_foods(foods)}")
-    print(f"Number of collected foods: {count_collected_foods(foods)}")
+    collected_foods = sort_collected_foods(foods)
+    print(f"Total number of foods: {len(foods)}")
+    print(f"Number of collected foods: {len(collected_foods)}")
+
+    print("For the collected foods:",end='\n')
+
     breakfast, lunch_dinner, dessert = sort_foods_by_meal_type(collected_foods)
-    print(f"Breakfast foods: {len(breakfast)}")
-    print(f"Lunch/Dinner foods: {len(lunch_dinner)}")
-    print(f"Dessert foods: {len(dessert)}")
+    print("Breakfast foods: ", end='')
+    print_breakfast(breakfast)
+    print()
+    print("Lunch/Dinner foods: ", end='')
+    print_lunch_dinner(lunch_dinner)
+    print()
+    print("Dessert foods: ", end='')
+    print_dessert(dessert)
+    print()
+
     print(f"Favorite cuisine style: {analyze_most_common_cuisine_style(collected_foods)}")
     print(f"Favorite calorie level: {analyze_most_common_calorie_level(collected_foods)}")
     print(f"Favorite flavour: {analyze_most_common_flavour(collected_foods)}")
